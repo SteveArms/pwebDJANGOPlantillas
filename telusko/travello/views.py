@@ -8,10 +8,6 @@ def index(request):
     dests = Destination.objects.all()
     return render(request, "index.html", {'dests': dests})
 
-def listarDestinos(request):
-    dests = Destination.objects.all()
-    return render(request, "listaDest.html", {'destinos': dests})
-
 def addDestination(request):
     if request.method == 'POST':
         nombre = request.POST['nombre']
@@ -37,7 +33,25 @@ def addDestination(request):
         destino = Destination()
     return render(request, 'addDest.html', {'destino': destino})
 
-def editDestination(request, id_destino):
+def listarDestinos(request):
+    dests = Destination.objects.all().order_by('id')
+    return render(request, "listaDest.html", {'destinos': dests})
+
+def editDestinos(request , id_destino):
     destino = Destination.objects.filter(id = id_destino).first()
-    form = DestinationForm(instance = destino)
-    return render(request, "destinoEdit.html", {'form':form , 'destino':destino})
+    form = DestinationForm(instance= destino)
+    return render(request, "destinoEdit.html", {"form": form, 'destino':destino})
+
+def actualizarDestinos(request, id_destino):
+    destino = Destination.objects.get(pk = id_destino)
+    form = DestinationForm(request.POST, instance= destino)
+    if form.is_valid():
+        form.save()
+    destinos = Destination.objects.all().order_by('id')
+    return render(request, "listaDest.html", {"destinos": destinos})
+
+def eliminarDest(request, id_destino):
+    destino = Destination.objects.get(pk = id_destino)
+    destino.delete()
+    destinos = Destination.objects.all().order_by('id')
+    return render(request, "listaDest.html", {"destinos":destinos, "mensaje": 'OK'})

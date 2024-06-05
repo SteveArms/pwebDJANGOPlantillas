@@ -4,6 +4,9 @@
 	<title>Lista Destinos</title>
 </head>
 <body>
+    {% if mensaje %}
+        <p> Destino eliminado exitosamente</p>
+    {% endif %}
     <table>
         <thead>
             <tr>
@@ -24,8 +27,8 @@
                 <td> {{ destino.desc }} </td>
                 <td> {{ destino.price }} </td>
                 <td> {{ destino.offer }} </td>
-                <td><a class="btn btn-warning" href="#"> Editar </a></td>
-                <td><a class="btn btn-danger" href="#"> Eliminar </a></td>
+                <td><a href="{% url 'editDest' destino.id %}"> Editar </a></td>
+                <td><a href="{% url 'delDest' destino.id %}"> Eliminar </a></td>
             </tr>
             {% endfor %}
         </tbody>
