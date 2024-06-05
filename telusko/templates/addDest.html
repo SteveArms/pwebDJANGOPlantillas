@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Agregar Destino</title>
+</head>
+<body>
+	<form action="{% url 'add' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre"><br>       
+        <input type="file" name="imagen" placeholder="Imagen"><br>
+        <input type="text" name="descripcion" placeholder="Descripcion"><br>
+        <input type="text" name="precio" placeholder="Precio"><br>
+        <label for="oferta"> Oferta: </label>
+        <select name="oferta" id="oferta" required>
+            <option value="True"> True </option>
+            <option value="False"> False </option>
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>
