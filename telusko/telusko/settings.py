@@ -17,9 +17,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni-form', 'bootstrap4', 'bootstrap5')
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -45,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

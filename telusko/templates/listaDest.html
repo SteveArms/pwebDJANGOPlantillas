@@ -1,37 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Lista Destinos</title>
+    <link type="text/css" href="{% static 'styles/lista_styles.css'%}" rel="stylesheet"></link>
 </head>
 <body>
-    {% if mensaje %}
-        <p> Destino eliminado exitosamente</p>
-    {% endif %}
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Oferta</th>
-                <th scope="col">Editar</th>
-                <th scope = "eliminar">Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for destino in destinos %}
-            <tr>
-                <th scope="row"> {{destino.id}} </th>
-                <td> {{ destino.name }} </td>
-                <td> {{ destino.desc }} </td>
-                <td> {{ destino.price }} </td>
-                <td> {{ destino.offer }} </td>
-                <td><a href="{% url 'editDest' destino.id %}"> Editar </a></td>
-                <td><a href="{% url 'delDest' destino.id %}"> Eliminar </a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="content">
+        {% if mensaje %}
+        <div class="mensaje">
+            <p> Destino eliminado exitosamente</p>
+        </div>
+        {% endif %}
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Oferta</th>
+                    <th scope="col">Editar</th>
+                    <th scope = "eliminar">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for destino in destinos %}
+                <tr>
+                    <th scope="row"> {{destino.id}} </th>
+                    <td> {{ destino.name }} </td>
+                    <td> {{ destino.desc }} </td>
+                    <td> {{ destino.price }} </td>
+                    <td> {{ destino.offer }} </td>
+                    <td class="boton amarillo"><a href="{% url 'editDest' destino.id %}"> Editar </a></td>
+                    <td class="boton rojo"><a href="{% url 'delDest' destino.id %}"> Eliminar </a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
