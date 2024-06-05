@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 import os
 from .models import Destination
+from .forms import DestinationForm
 
 def index(request):
     dests = Destination.objects.all()
     return render(request, "index.html", {'dests': dests})
+
+def listarDestinos(request):
+    dests = Destination.objects.all()
+    return render(request, "listaDest.html", {'destinos': dests})
 
 def addDestination(request):
     if request.method == 'POST':
@@ -31,3 +36,8 @@ def addDestination(request):
     else:   
         destino = Destination()
     return render(request, 'addDest.html', {'destino': destino})
+
+def editDestination(request, id_destino):
+    destino = Destination.objects.filter(id = id_destino).first()
+    form = DestinationForm(instance = destino)
+    return render(request, "destinoEdit.html", {'form':form , 'destino':destino})
