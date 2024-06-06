@@ -1,0 +1,223 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[left=25mm, right=25mm, top=35mm, bottom=30mm, headheight=35mm]{geometry}
+\usepackage{graphicx}
+%opening
+\title{Laboratorio 7 - Django Plantillas Turisticas}
+\author{Armando Steven Cuno Cahuari}
+\newcommand{\integrante}{\fontsize{13}{14}\selectfont Cuno Cahuari Armando Steven}
+\newcommand{\curso}{ \fontsize{13}{14}\selectfont Programacion Web 2}
+\newcommand{\tema}{\fontsize{13}{14}\selectfont Laboratorio 7 - DJANGO - Plantillas Turisticas}
+\newcommand{\repositorio}{\fontsize{13}{14}\selectfont https://github.com/SteveArms/pwebDJANGOPlantillas.git}
+\newcommand{\profesor}{Carlo Jose Luis Corrales Delgado}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\textbf{\fontsize{20}{19}\selectfont Universidad Nacional San Agustin de Arequipa} \\
+	\vspace{1em}
+	\textbf{\fontsize{15}{16}\selectfont Facultad de Ingenieria de Produccion y Servicios} \\ 
+	\vspace{1em}
+	\textbf{\fontsize{15}{16}\selectfont Escuela Profesional de Ingenieria de Sistemas} \\
+	\vspace{1cm}
+	\includegraphics[height=4.5cm]{logoSistemas.jpeg} \\
+	\vspace{1cm}
+	\textbf{\fontsize{13}{14}\selectfont Curso: } \\ \vspace{1em}
+	\curso \\ \vspace{1em}
+	\textbf{\fontsize{13}{14}\selectfont Profesor:} \\ \vspace{1em}
+	\profesor \\ \vspace{1em}
+	\textbf{\fontsize{13}{14}\selectfont Tema: } \\ \vspace{1em}
+	\tema \\ \vspace{1em}
+	\textbf{\fontsize{13}{14}\selectfont Integrante: } \\ \vspace{1em}
+	\integrante \\ \vspace{1em}
+	\textbf{\fontsize{13}{14}\selectfont Repositorio:} \\ \vspace{1em}
+	\repositorio \\ \vspace{5em}
+	\textbf{\fontsize{20}{14}\selectfont 2024} \\ \vspace{5em}
+\end{titlepage}
+\section*{\centering Informe Nro 7 - Django Plantillas Turisticas}
+	\begin{flushleft}
+		La tarea actual implica utilizar una plantilla web de Lugares Turísticos para replicar su código utilizando las diversas funciones proporcionadas por Django, como modelos, vistas, plantillas, conexión a la base de datos, entre otros. Además, se nos solicita implementar métodos para agregar, modificar, listar y eliminar estos datos que provienen del modelo, que actúa como la base de datos.
+	\end{flushleft}
+\subsection*{Actividad del Video - Plantilla Turistica}
+	\subparagraph*{Entorno virtual}
+		\begin{flushleft}
+			El entorno virtual que utilizaremos para este proyecto contendrá las herramientas necesarias para su funcionamiento, como Django, PostgreSQL, Pillow y otras bibliotecas requeridas. Esto garantizará un entorno aislado y adecuado para el desarrollo de nuestra aplicación.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=5cm]{img1.jpeg}
+			\caption{Entorno virtual}
+		\end{figure}
+	\subparagraph*{App - Travello}
+		\begin{flushleft}
+			La aplicación "travello" contendrá los datos correspondientes en forma de modelo, con el cual trabajaremos. Además, definiremos las vistas que generarán las respuestas en HTML, teniendo en cuenta las funciones y solicitudes del usuario. Utilizaremos una estructura de HTML basada en una plantilla que rescatará el index para su funcionamiento. Además, en la actividad del video, implementaremos un sistema de inicio de sesión, registro y cierre de sesión (Login, Register, y Logout).
+		\end{flushleft}
+	\vspace*{6cm}
+	\subparagraph*{Models Travello}
+		\begin{flushleft}
+			El modelo "Destination" representa la estructura de datos para los Lugares Turísticos y se almacenará en la base de datos predeterminada de Django, que es SQLite3. Hereda los métodos y clases de models y especifica cinco datos: nombre, imagen, descripción, precio y estado de oferta. Las imágenes se guardan en una carpeta especial llamada "pics", separada de los elementos estáticos.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=4cm]{img2.jpeg}
+			\caption{Modelo Destination}
+		\end{figure}
+	\subparagraph*{Forms Travello}
+		\begin{flushleft}
+			Crearemos un objeto llamado "DestinationForm" para gestionar los datos ingresados por el usuario. Este formulario contendrá campos correspondientes a los datos que deseamos recolectar. Utilizaremos el atributo "fields" para especificar qué campos incluir en el formulario.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=4cm]{img3.jpeg}
+			\caption{Forms Destination}
+		\end{figure}
+		\vspace*{6cm}
+	\subparagraph*{Vistas Travello}
+		\begin{flushleft}
+			Las vistas son responsables de manejar las solicitudes del usuario y, utilizando las funciones proporcionadas por Django, devolverán una plantilla HTML con los datos solicitados. Estas vistas pueden interactuar tanto con formularios como con los modelos previamente definidos, proporcionando así una respuesta adecuada al usuario.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=8cm]{img4.jpeg}
+			\caption{Vistas de la App}
+		\end{figure}
+	\subparagraph*{Admin Travello}
+		\begin{flushleft}
+			Para facilitar la gestión de la base de datos proporcionada por el modelo, es crucial vincularla con el sitio de administración de Django. A través del panel de administración, al acceder a la URL con 'admin/', podemos realizar acciones como agregar, eliminar o modificar objetos directamente en la base de datos. Este flujo simplifica significativamente la administración de datos del sitio web.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=4cm]{img5.jpeg}
+			\caption{Admin de la App}
+		\end{figure}
+	\vspace*{2cm}
+	\subparagraph*{Urls}
+		\begin{flushleft}
+			Las URLs se encargan de listar las rutas a las que podemos acceder a través de la barra de direcciones del navegador. Estas rutas especifican los diferentes recursos y páginas disponibles en nuestra aplicación web.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=4cm]{img6.jpeg}
+			\caption{URLS del proyecto}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=4cm]{img7.jpeg}
+			\caption{URLS de la app}
+		\end{figure}
+	\subparagraph*{Templates}
+		\begin{flushleft}
+			La estructura HTML está encargada de la presentación visual que verá el usuario. Esta estructura, además, incluirá elementos dinámicos y estáticos, como la implementación del lenguaje Django para renderizar contenido de manera dinámica en las plantillas HTML.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=8cm]{img8.jpeg}
+			\caption{Ejemplo de Template}
+		\end{figure}
+	\subparagraph*{Settings del proyecto}
+		\begin{flushleft}
+			En nuestro proyecto, utilizaremos PostgreSQL en lugar de SQLite3 como base de datos. Además, al manejar elementos estáticos, estableceremos una ruta absoluta donde se ubicarán dichos elementos. En el formulario, hay un campo para subir imágenes, las cuales se guardarán en una ruta específica al momento de ser almacenadas.
+		\end{flushleft}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=8cm]{img9.jpeg}
+			\caption{Settings de elementos estaticos}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=8cm]{img10.jpeg}
+			\caption{Settings de la base de datos}
+		\end{figure}
+\section*{Plantilla de Lugares Turisticos}
+	\subparagraph*{Plantilla Turistica}
+	\begin{flushleft}
+		Para comenzar esta aplicacion, se nos pidió utilizar una plantilla turística a la que deberemos agregar destinos, así como la capacidad de modificarlos o eliminarlos de la base de datos. Esta es la plantilla que utilizaremos.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img11.jpeg}
+		\caption{Plantilla}
+	\end{figure}
+	\vspace*{1cm}
+	\subparagraph*{Configuracion de la base de Datos}
+	\begin{flushleft}
+		Para comenzar con la aplicación turística, primero será necesario cambiar la base de datos predeterminada de Django, que es SQLite3, a PostgreSQL para una mejor gestión de datos. Además, utilizaremos la interfaz de administración de Django para gestionar la aplicación de manera eficiente.	
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=8cm]{img10.jpeg}
+		\caption{Base de Datos}
+	\end{figure}
+	\begin{flushleft}
+		Para conectarnos a la base de datos PostgreSQL, será necesario instalar la biblioteca `psycopg2-binary` utilizando `pip`.
+	\end{flushleft}
+	\vspace*{12cm}
+	\subparagraph*{Vistas del Aplicativo}
+	\begin{flushleft}
+		En las vistas, definiremos varias funciones para agregar, modificar, eliminar y listar los destinos correspondientes en la base de datos, mediante funciones que reciben las solicitudes.\\
+		Para agregar un destino sin utilizar el módulo `forms`, recopilaremos los datos en variables. Dado que vamos a ingresar imágenes, estas se guardarán en una ruta específica. Una vez que tengamos todos los datos, crearemos una instancia del modelo `Destination` para guardarla en la base de datos. La función evaluará si el método de la solicitud es POST para determinar si debe guardar los datos. Si no lo es, creará una instancia vacía. Utilizaremos `render` para elegir la plantilla en la que se trabajará, así como los datos seleccionados para los elementos dinámicos.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=6cm]{img12.jpeg}
+		\caption{Vistas - agregar}
+	\end{figure}
+	\begin{flushleft}
+		Luego tenemos las funciones modificar , eliminar y enlistar que trabajaran unidas ya que mostraremos el enlistado de los destinos con botones a sus costados ya sea para modificar o eliminar los datos correspondietnes, para ello en la funcion eliminar tendra como parametro la solicitud y la id del objeto que deseemos eliminar en esteLuego, tenemos las funciones para modificar, eliminar y enlistar destinos, que trabajarán de manera integrada. Mostraremos una lista de los destinos con botones al lado de cada uno, permitiendo modificar o eliminar los datos correspondientes. \\
+		La función eliminar recibirá como parámetros la solicitud y el ID del objeto que se desea eliminar. Recopilaremos el ID correspondiente del módulo `Destination` y eliminaremos el elemento de la base de datos. Luego, los datos se ordenarán y redirigiremos a la página de listado. caso recopilaremos desde el modulo Destination la id correspondiente al elementos que deseemos eliminar y luego los datos correspondientes a la base de datos seran ordenados asimismo nos redirijira hacia la pagina enlistar\\
+		La función de modificar estará compuesta por dos subfunciones: editar y actualizar los datos correspondientes. La función editar recopilará, mediante la ID asignada, los valores correspondientes a esa ID. Luego, estos serán instanciados en un formulario para que podamos modificarlos y nos redirigirá a una página llamada `destinoEdit`. La segunda función, actualizar, se encargará, una vez en `destinoEdit`, de validar los datos y guardar estos datos nuevos y modificados en el mismo objeto.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=6cm]{img13.jpeg}
+		\caption{Vistas - modificar, eliminar y enlistar}
+	\end{figure}
+	\vspace*{3cm}
+	\subparagraph*{Templates de Agregar}
+	\begin{flushleft}
+		En el formulario que utilizaremos en esa página, consideraremos que el método será POST. La acción que realizará el formulario al interactuar con el botón corresponderá a una URL que implementamos dentro de la aplicación y será gestionada por una función. Este formulario incluirá un token para proteger los datos contra ataques CSRF.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img14.jpeg}
+		\caption{Estructura HTML de agregar}
+	\end{figure}
+	\vspace*{4cm}
+	\subparagraph*{Templates de Enlistar - Modificar y Eliminar}
+	\begin{flushleft}
+		En este archivo, al ser dinámico y recibir datos de la vista, utilizaremos una tabla para enlistar los destinos. Las filas se agregarán mediante una iteración sobre los datos. Cada fila contendrá dos botones: uno para modificar y otro para eliminar los datos correspondientes a esa fila.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img15.jpeg}
+		\caption{Estructura HTML de enlistar 1}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=4cm]{img16.jpeg}
+		\caption{Estructura HTML de enlistar 2}
+	\end{figure}
+	\subparagraph*{Templates para modificar}
+	\begin{flushleft}
+		La estructura que utilizamos para presentar la opción de modificar será mediante un formulario que contendrá los datos ya instanciados de una fila específica, permitiendo modificar los datos correspondientes. Para esto, utilizamos Crispy Forms, que facilita la creación de formularios con configuraciones predefinidas y una presentación coherente.
+	\end{flushleft}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img17.jpeg}
+		\caption{Estructura HTML de modificar}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img18.jpeg}
+		\caption{Crispy}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img19.jpeg}
+		\caption{Aplicacion en Server 1}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=7cm]{img20.jpeg}
+		\caption{Aplicacion en Server 2}
+	\end{figure}
+\end{document}
